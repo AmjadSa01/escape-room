@@ -1,1 +1,287 @@
+:root {
+  --bg-color: #0a0a0f;
+  --card-bg: #15151e;
+  --text-main: #e2e8f0;
+  --text-muted: #94a3b8;
+  --accent: #f59e0b;
+  --accent-glow: rgba(245, 158, 11, 0.4);
+  --success: #10b981;
+  --danger: #ef4444;
+  --border: #2d2d3d;
+}
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Cairo', sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  background-image: radial-gradient(circle at 50% 0%, #1e1b4b 0%, transparent 50%);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.game-container {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* الرأس */
+.game-header {
+  text-align: center;
+}
+
+.game-header h1 {
+  font-size: 2.5rem;
+  color: var(--accent);
+  text-shadow: 0 0 20px var(--accent-glow);
+  margin-bottom: 10px;
+}
+
+.game-header p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+/* الألغاز */
+.puzzles-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.puzzle-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transition: 0.3s;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.puzzle-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.puzzle-card h3 {
+  color: var(--accent);
+  font-size: 1.2rem;
+}
+
+.puzzle-card p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.input-group input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #0f0f15;
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.2s;
+}
+
+.input-group input:focus {
+  border-color: var(--accent);
+}
+
+.input-group button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  background: var(--accent);
+  color: #000;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.input-group button:hover {
+  background: #d97706;
+}
+
+/* رسائل النجاح والخطأ */
+.message {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-align: center;
+  min-height: 20px;
+}
+
+.message.success { color: var(--success); }
+.message.error { color: var(--danger); }
+
+/* قسم القفل والباب */
+.door-section {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.collected-codes h3 {
+  color: var(--text-main);
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.codes-display {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.code-box {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 700;
+  background: #0f0f15;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  color: var(--text-muted);
+  transition: 0.3s;
+}
+
+.code-box.unlocked {
+  border-color: var(--success);
+  color: var(--success);
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+}
+
+/* القفل */
+.lock-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.lock-container input {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.5rem;
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid var(--border);
+  background: #0f0f15;
+  color: white;
+  outline: none;
+  letter-spacing: 10px;
+}
+
+.lock-container input:focus {
+  border-color: var(--accent);
+}
+
+.lock-container button {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 10px;
+  border: none;
+  background: var(--accent);
+  color: #000;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.lock-container button:hover {
+  background: #d97706;
+}
+
+/* شاشة الفوز */
+.victory-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 15, 0.95);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 100;
+  padding: 20px;
+  backdrop-filter: blur(5px);
+}
+
+.victory-screen h2 {
+  font-size: 3rem;
+  color: var(--success);
+  margin-bottom: 15px;
+  text-shadow: 0 0 30px rgba(16, 185, 129, 0.5);
+}
+
+.victory-screen p {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  margin-bottom: 30px;
+}
+
+.victory-screen button {
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 10px;
+  border: none;
+  background: var(--accent);
+  color: #000;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.victory-screen button:hover {
+  background: #d97706;
+}
+
+/* إخفاء العناصر */
+.hidden {
+  display: none !important;
+}
+
+/* للجوال */
+@media (max-width: 600px) {
+  .game-header h1 { font-size: 2rem; }
+  .codes-display { gap: 10px; }
+  .code-box { width: 50px; height: 50px; font-size: 1.5rem; }
+}
