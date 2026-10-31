@@ -97,14 +97,14 @@ function playSound(type) {
       gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
       oscillator.start();
       oscillator.stop(audioCtx.currentTime + 0.3);
-    } else if (type === "error") {
-      oscillator.type = "sawtooth";
-      oscillator.frequency.setValueAtTime(200, audioCtx.currentTime);
-      oscillator.frequency.exponentialRampToValueAtTime(150, audioCtx.currentTime + 0.2);
-      gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
-      gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
+        } else if (type === "error") {
+      oscillator.type = "sine";
+      oscillator.frequency.setValueAtTime(250, audioCtx.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.15);
+      gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.15);
       oscillator.start();
-      oscillator.stop(audioCtx.currentTime + 0.2);
+      oscillator.stop(audioCtx.currentTime + 0.15);
     } else if (type === "victory") {
       oscillator.type = "triangle";
       oscillator.frequency.setValueAtTime(400, audioCtx.currentTime);
