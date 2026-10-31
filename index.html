@@ -1,1 +1,87 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>حجرة الألغاز | Escape Room</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
 
+  <div class="game-container">
+    
+    <!-- الشاشة الرئيسية للعبة -->
+    <header class="game-header">
+      <h1>🚪 حجرة الألغاز</h1>
+      <p>اجمع الأرقام الثلاثة من الألغاز لتفتح الباب وتهرب!</p>
+    </header>
+
+    <!-- قسم الألغاز -->
+    <section class="puzzles-section">
+      
+      <!-- اللغز الأول -->
+      <div class="puzzle-card" id="puzzle-1">
+        <h3>اللغز الأول</h3>
+        <p>أنا رقم، إذا أضفتني إلى نفسي، صرت 10. من أنا؟</p>
+        <div class="input-group">
+          <input type="number" id="answer-1" placeholder="اكتب الرقم" />
+          <button onclick="checkPuzzle(1, 5)">تحقق</button>
+        </div>
+        <span class="message" id="msg-1"></span>
+      </div>
+
+      <!-- اللغز الثاني -->
+      <div class="puzzle-card" id="puzzle-2">
+        <h3>اللغز الثاني</h3>
+        <p>ما هو الرقم الذي إذا ضربته في 2، ثم أضفت 4، تحصل على 14؟</p>
+        <div class="input-group">
+          <input type="number" id="answer-2" placeholder="اكتب الرقم" />
+          <button onclick="checkPuzzle(2, 5)">تحقق</button>
+        </div>
+        <span class="message" id="msg-2"></span>
+      </div>
+
+      <!-- اللغز الثالث -->
+      <div class="puzzle-card" id="puzzle-3">
+        <h3>اللغز الثالث</h3>
+        <p>أنا عدد الأشهر في السنة ناقص 4. ما هو الرقم؟</p>
+        <div class="input-group">
+          <input type="number" id="answer-3" placeholder="اكتب الرقم" />
+          <button onclick="checkPuzzle(3, 8)">تحقق</button>
+        </div>
+        <span class="message" id="msg-3"></span>
+      </div>
+
+    </section>
+
+    <!-- قسم القفل والباب -->
+    <section class="door-section">
+      <div class="collected-codes">
+        <h3>الأرقام التي جمعتها:</h3>
+        <div class="codes-display">
+          <span class="code-box" id="code-1">?</span>
+          <span class="code-box" id="code-2">?</span>
+          <span class="code-box" id="code-3">?</span>
+        </div>
+      </div>
+
+      <div class="lock-container">
+        <input type="password" id="final-code" placeholder="أدخل الكود المكون من 3 أرقام" maxlength="3" />
+        <button onclick="openDoor()">🔓 فتح الباب</button>
+        <span class="message" id="final-msg"></span>
+      </div>
+    </section>
+
+    <!-- شاشة الفوز (مخفية افتراضياً) -->
+    <div class="victory-screen hidden" id="victory-screen">
+      <h2>🎉 مبروك! لقد هربت!</h2>
+      <p>لقد أثبتت ذكاءك وحليت جميع الألغاز.</p>
+      <button onclick="location.reload()">العب مرة أخرى 🔄</button>
+    </div>
+
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
